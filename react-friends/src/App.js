@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
+import { people } from './people';
 import PeopleList from './PeopleList'
 import './App.css';
-import { people } from './people';
+
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      peopleArr:people,
     }
   }
+  componentWillMount(){
+    this.setState({ people: people });
+    //console.log("peopleArr: ", people)
+  }
+
   render() {
-    // console.log("App.js State: ",this.state);
+    console.log("App.js State: ",this.state);
     // console.log("App.js State: ",this.state.peopleArr[0]);
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome to Derrick's Friend List</h1>
         </header>
-        <PeopleList appState={this.state.peopleArr[0]}/>
+        <PeopleList people={this.state.people}/>
         <div></div>
 
 
